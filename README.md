@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Phoenix-Guide-in-Chinese
 
 ##说明
@@ -44,6 +43,3 @@
 	- [] SSL
 	- [] 代理
 	- [] Elixir和Erlang学习
-=======
-#Phoenix-Guide-in-Chinese
->>>>>>> 2d211abf992e83f62a5bb6b6f74c25ea1dee8aae
