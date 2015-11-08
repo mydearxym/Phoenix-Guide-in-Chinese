@@ -7,5 +7,5 @@
    * [学习](chapter1/section1.3.md)
    * [社区](chapter1/section1.4.md)
 * [指南](chapter2/README.md)
-   * [创建和运行](chapter2/section2.1md.md)
+   * [创建和运行](chapter2/section2.1.md)
 
