@@ -5,12 +5,10 @@
 + 翻译水平不高
 + 欢迎拍砖
 
-:heart: :green_heart: :blue_heart: :yellow_heart: :purple_heart:
-
 ##预期目标
 - 介绍
 	- 总览
-	- [x] 安装
+	- 安装&nbsp;&nbsp;&nbsp;&nbsp;<strong><em>完成</em></strong>
 	- 学习
 	- 社区
 - 指南
