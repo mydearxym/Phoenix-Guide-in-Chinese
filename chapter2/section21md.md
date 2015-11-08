@@ -15,4 +15,5 @@ $ mix phoenix.new /Users/me/work/elixir-stuff/hello_phoenix
 ```
 $ mix phoenix.new hello_phoenix
 ```
->在开始之前有一个关于[Brunch.io](http://brunch.io/)的注意事项：
+>在开始之前有一个关于[Brunch.io](http://brunch.io/)的注意事项：Phoenix默认使用Brunch.io作为静态文件管理器。Brunch.io的依赖是通过node.js的包管理器来安装的，而不是mix。因此Phoenix将在`mix phoenix.new`命令完成后提示我们来安装它。如果选“否”并且也不用`npm install`安装相应依赖的话，应用在运行时会抛出错误，而且静态文件可能无法被正确加载。如果不想使用Brunch.io，只要在执行`mix phoenix.new`命令时设置参数`--no-brunch`即可。
+
