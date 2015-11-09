@@ -43,7 +43,7 @@ You can also run your app inside IEx (Interactive Elixir) as:
 
     $ iex -S mix phoenix.server
 ```
-Phoenix假设我们的PostgreSQL数据库有一个拥有基本权限的用户名为`postgres`，密码为“postgres”。如果事实不是这样，请查阅[ecto.create](http://www.phoenixframework.org/docs/mix-tasks#section--ecto-create-)部分的指南。
+Phoenix假设我们的PostgreSQL数据库有一个拥有基本权限的用户名为`postgres`，密码为“postgres”。如果事实不是这样，请查阅[ecto.create](http://www.phoenixframework.org/docs/mix-tasks#section--ecto-create-)部分的指南。(译者注：windows用户需要把postgres数据库目录下的bin文件夹加入PATH)
 
 搞定后，执行下面的命令：
 ```
