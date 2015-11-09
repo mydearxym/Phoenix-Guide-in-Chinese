@@ -61,3 +61,15 @@ lib
 ```
 
 了解得够多了，让我们编写第一个页面。
+
+##<strong><em>一个新路由</em></strong>
+
+路由会匹配一个HTTP请求并将其交由控制器，控制器会根据它拥有的动作来进行处理。Phoenix在`web/router.ex`文件里面为我们设置路由。这也是这部分指南里我们要写代码的地方。
+
+创建与运行指南里面的“Welcome to Phoenix!”页面的路由如下：
+```
+get "/", PageController, :index
+```
+来分析一些这个路由告诉我们什么信息。访问[http://localhost:4000/](http://localhost:4000/)这个行为意味着对网站的根目录发送了一个get请求。所有这种请求都会被`web/controllers/page_controller.ex`文件里面的`HelloPhoenix.PageController `模块的`index`函数处理。
+
+我们将要建立一个路由为[http://localhost:4000/hello](http://localhost:4000/hello)的页面，它只会简单地显示“Hello World, from Phoenix!”。
