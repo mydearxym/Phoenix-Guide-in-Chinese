@@ -7,9 +7,5 @@
    * [学习](chapter1/section1.3.md)
    * [社区](chapter1/section1.4.md)
 * [指南](chapter2/README.md)
-<<<<<<< HEAD
-   * [创建和运行](chapter2/section21md.md)
-=======
    * [创建和运行](chapter2/section2.1.md)
->>>>>>> f4419f05e4ecf79abcb88b65dcddbb90da9ccfb5
-
+   * [添加页面](chapter2/section2.2.md)
