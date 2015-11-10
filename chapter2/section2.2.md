@@ -156,3 +156,17 @@ end
 ```
 ##<strong><em>一个新模板</em></strong>
 
+Phoenix模板能够渲染数据。Phoenix的标准模板引擎是eex，它以[Embedded Elixir](http://elixir-lang.org/docs/stable/eex/http://elixir-lang.org/docs/stable/eex/)为基础。我们所有的模板文件都会有`.eex`的扩展名。
+
+模板在视图里面，视图又在控制器里面。事实上，这意味着我们在目录`web/templates`下创建了一个以控制器名字命名的目录。在这个应用下，它意味着我们需要在`web/templates`目录下创建一个目录`hello`，并在里面创建一个`index.html.eex`文件。
+
+现在就创建一个文件`web/templates/hello/index.html.eex`，代码如下：
+```
+<div class="jumbotron">
+  <h2>Hello World, from Phoenix!</h2>
+</div>
+```
+现在，我们已经搞定了路由，控制器，视图和模板，我们应该能在浏览器的[http://localhost:4000/hello](http://localhost:4000/hello)中看到Hello World, from Phoenix!（如果你关闭了服务器，重新开启的命令是`$ mix phoenix.server`）。
+
+![phoenix welcome pages](https://www.filepicker.io/api/file/TLBRJ5LBR9mK9Fkcqwea)
+
