@@ -120,4 +120,15 @@ end
 ```
 ##<strong><em>一个新控制器</em></strong>
 
-控制器是Elixir模块，控制器的行为就是在里面定义的Elixir函数。行为的目的就是搜集数据和完成和渲染有关的任务。我们的路由指定
+控制器是Elixir模块，控制器的行为就是在里面定义的Elixir函数。行为的目的就是搜集数据和完成和渲染有关的任务。我们的路由明确指出了我们需要一个名为`HelloPhoenix.HelloController`的模块，里面有一个`index/2`的行为函数。
+
+为了达到路由的要求，让我们创建一个新文件`web/controllers/hello_controller.ex`，并写入下面的代码：
+```
+defmodule HelloPhoenix.HelloController do
+  use HelloPhoenix.Web, :controller
+
+  def index(conn, _params) do
+    render conn, "index.html"
+  end
+end
+```
