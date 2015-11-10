@@ -135,3 +135,15 @@ end
 对于`use HelloPhoenix.Web, :controller`的讨论我们留到[控制器指南](http://www.phoenixframework.org/docs/controllers)。现在我们主要讨论行为函数`index/2`。
 
 一个控制器行为需要两个参数。一个是连接参数`conn`，用来传递与请求有关的数据包。第二个是`params`，用来传递请求中的参数。在这里，我们将不会用到`params`，并且给`params`加上`_`前缀来避免编译时的警告。
+
+这个动作的核心`render conn, "index.html"`。这行代码告诉Phoenix寻找一个叫做`index.html.eex`的模板并渲染它。Phoenix会在以控制器名字命名的目录下寻找模板，也就是`web/templates/hello`。
+
+注意：在这里使用一个原子（atom）作为模板的名字也是可以得。`render conn,:index`，但这样会让模板不清楚选择的是`index.html`还是`index.json`等等。
+
+响应渲染函数的模块是视图，接下来我们会创建一个新视图。
+
+##<strong><em>一个新视图</em></strong>
+
+Phoenix的视图负责几个重要的工作。它们渲染模板。它们作为数据的表现层，为模板渲染数据做准备。相关的函数应该被放置在视图模块里面。
+
+举个例子
