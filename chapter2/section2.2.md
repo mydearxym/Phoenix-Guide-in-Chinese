@@ -132,4 +132,6 @@ defmodule HelloPhoenix.HelloController do
   end
 end
 ```
-对于`use HelloPhoenix.Web, :controller`的讨论我们留到[控制器指南](http://www.phoenixframework.org/docs/controllers)
+对于`use HelloPhoenix.Web, :controller`的讨论我们留到[控制器指南](http://www.phoenixframework.org/docs/controllers)。现在我们主要讨论行为函数`index/2`。
+
+一个控制器行为需要两个参数。一个是连接参数`conn`，用来传递与请求有关的数据包。第二个是`params`，用来传递请求中的参数。在这里，我们将不会用到`params`，并且给`params`加上`_`前缀来避免编译时的警告。
