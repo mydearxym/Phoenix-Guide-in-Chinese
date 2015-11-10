@@ -13,7 +13,7 @@
 	- 社区
 - 指南
 	- 创建和运行&nbsp;&nbsp;&nbsp;&nbsp;<strong><em>完成</em></strong>
-	- 添加页面
+	- 添加页面&nbsp;&nbsp;&nbsp;&nbsp;<strong><em>完成</em></strong>
 	- 路由
 	- 插件
 	- 控制器
