@@ -132,3 +132,4 @@ defmodule HelloPhoenix.HelloController do
   end
 end
 ```
+对于`use HelloPhoenix.Web, :controller`的讨论我们留到[控制器指南](http://www.phoenixframework.org/docs/controllers)
