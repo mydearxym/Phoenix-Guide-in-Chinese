@@ -73,3 +73,35 @@ get "/", PageController, :index
 来分析一些这个路由告诉我们什么信息。访问[http://localhost:4000/](http://localhost:4000/)这个行为意味着对网站的根目录发送了一个get请求。所有这种请求都会被`web/controllers/page_controller.ex`文件里面的`HelloPhoenix.PageController `模块的`index`函数处理。
 
 我们将要建立一个路由为[http://localhost:4000/hello](http://localhost:4000/hello)的页面，它只会简单地显示“Hello World, from Phoenix!”。
+
+要创建一个新页面，第一件事就是为它定义一个路由。在你喜欢的文本编辑器里面打开`web/router.ex`。它的结构如下：
+```
+defmodule HelloPhoenix.Router do
+  use HelloPhoenix.Web, :router
+
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+  
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/", HelloPhoenix do
+    pipe_through :browser # Use the default browser stack
+
+    get "/", PageController, :index
+  end
+
+  # Other scopes may use custom stacks.
+  # scope "/api", HelloPhoenix do
+  #   pipe_through :api
+  # end
+end
+```
+现在我们讲不讨论管道（pipeline）和`scope`的用法，而是专注于路由。（如果你很好奇，可以查阅[路由部分的指南](http://www.phoenixframework.org/docs/routing)）
+
