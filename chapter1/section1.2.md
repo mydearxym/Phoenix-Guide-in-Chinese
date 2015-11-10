@@ -10,7 +10,7 @@ Phoenix是用Elixir来编写的，因此我们的应用也将用Elixir来编写�
 
 如果是第一次把Elixir安装在电脑上，那么之后还需要安装包管理器Hex。Hex是Phoenix应用运行（安装依赖）和安装其它Elixir依赖的必要条件。
 
-安装Hex的命令如下（注：可能要翻墙）
+安装Hex的命令如下（译者注：可能要翻墙）
 
 ```
 $mix local.hex
@@ -27,7 +27,7 @@ Elixir代码编译成Erlang字节码到Erlang虚拟机上运行。如果没有Er
 
 一旦我们成功安装了Elixir和Erlang，我们就可以开始安装Phoenix的mix镜像。一个mix镜像就是一个zip压缩包，包含着一个应用程序和它的编译过的beam文件。这个镜像会绑定到一个特定的版本。这里所说的镜像就是我们用来创建一个新的，基础的Phoenix应用的框架。
 
-安装Phoenix的镜像的命令如下：（注：可能需要翻墙）
+安装Phoenix的镜像的命令如下：（译者注：可能需要翻墙）
 
 ```
 $ mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v1.0.3/phoenix_new-1.0.3.ez
