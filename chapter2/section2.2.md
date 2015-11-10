@@ -170,3 +170,4 @@ Phoenix模板能够渲染数据。Phoenix的标准模板引擎是eex，它以[Em
 
 ![phoenix welcome pages](https://www.filepicker.io/api/file/TLBRJ5LBR9mK9Fkcqwea)
 
+我们刚才做的事情有几个比较值得注意。当我们改变代码时，并不需要重新启动服务器就可以在浏览器中看到变化。是的，Phoenix支持热更新！同时，尽管`index.html.eex`只由一个简单div标签构成，但最后我们会得到一个完整的html页面。我们的首页会被渲染进应用输出页面`web/templates/layout/app.html.eex`。（译者注：也就是模板继承）。在那个页面里你如果看到`<%= @inner %>`，在生成html页面传给浏览器前它会被`index.html.eex`的内容替换掉。
