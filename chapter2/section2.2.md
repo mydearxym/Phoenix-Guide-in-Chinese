@@ -118,3 +118,6 @@ scope "/", HelloPhoenix do
   get "/hello", HelloController, :index
 end
 ```
+##<strong><em>一个新控制器</em></strong>
+
+控制器是Elixir模块，控制器的行为就是在里面定义的Elixir函数。行为的目的就是搜集数据和完成和渲染有关的任务。我们的路由指定
