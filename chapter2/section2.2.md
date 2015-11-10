@@ -171,3 +171,64 @@ Phoenix模板能够渲染数据。Phoenix的标准模板引擎是eex，它以[Em
 ![phoenix welcome pages](https://www.filepicker.io/api/file/TLBRJ5LBR9mK9Fkcqwea)
 
 我们刚才做的事情有几个比较值得注意。当我们改变代码时，并不需要重新启动服务器就可以在浏览器中看到变化。是的，Phoenix支持热更新！同时，尽管`index.html.eex`只由一个简单div标签构成，但最后我们会得到一个完整的html页面。我们的首页会被渲染进应用输出页面`web/templates/layout/app.html.eex`。（译者注：也就是模板继承）。在那个页面里你如果看到`<%= @inner %>`，在生成html页面传给浏览器前它会被`index.html.eex`的内容替换掉。
+
+# 额外的新页面
+
+让我们添加一个稍微复杂点的新页面。我们将添加一个新页面，它较之于前面的页面URL后有额外部分“messenger”，并将其作为参数传给控制器再传递给模板，以便于我们的messenger能向我们打招呼。就像我们前面做的一样，我们先创建一个路由。
+
+
+##<strong><em>一个新路由</em></strong>
+
+对于这个练习，我们将复用刚刚创建的`HelloController`，并添加新的`show`行为函数。我们在最后一个路由下添加一行代码，如下：
+```
+scope "/", HelloPhoenix do
+  pipe_through :browser # Use the default browser stack.
+
+  get "/", PageController, :index
+  get "/hello", HelloController, :index
+  get "/hello/:messenger", HelloController, :show
+end
+```
+注意我们把原子`:messenger`放在路径里。Phoenix将会把URL里面这个位置的值与key`messenger`组成一个[字典（Dict）](http://elixir-lang.org/docs/stable/elixir/Dict.html)传给控制器。
+
+举个例子，如果我们在浏览器中打开[http://localhost:4000/hello/Frank](http://localhost:4000/hello/Frank)，那么`:messenger`的值就是`Frank`。
+
+##<strong><em>一个新动作</em></strong>
+
+对于发送到我们定义的路由的请求，它们会被`HelloPhoenix.HelloController`的`show`行为函数处理。我们已经有了控制器，也就是`web/controllers/hello_controller.ex`，因此我们需要把`show`函数加进去。这次，我们需要封装一个map传给行为函数，从而我们能把messenger传给模板。为此，我们在控制器里面定义show函数。
+```
+def show(conn, %{"messenger" => messenger}) do
+  render conn, "show.html", messenger: messenger
+end
+```
+这里有很多事情要注意。我们对传给show函数的参数进行了模式匹配，从而变量`messenger`能够与URL里面`:messenger`的值绑定起来。举个例子，如果我们的URL是[http://localhost:4000/hello/Frank](http://localhost:4000/hello/Frank)，对应的变量会与`Frank`绑定起来。
+
+在`show`函数里面，我们传给render函数第三个参数，一个键值对，其中`:messenger`为键，变量messenger就是要传递的值。
+
+注意：如果函数体需要整个map的权限来进行变量绑定，我们可以这样定义`show/2`函数：
+```
+def show(conn, %{"messenger" => messenger} = params) do
+  ...
+end
+```
+最好记住[字典（Dict）](http://elixir-lang.org/docs/stable/elixir/Dict.html)的键总是字符串，还有`=`不意味着赋值，而是[模式匹配](http://elixir-lang.org/getting-started/pattern-matching.html)。
+
+##<strong><em>一个新模板</em></strong>
+
+对于问题的最后一部分，我们需要一个新的模板。由于这个模板的建立是为了`HelloController`的`show`函数，因此它将会被放在目录`web/templates/hello`下，命名为`show.html.eex`。它看起来就像前面的`index.html.eex`，除了显示的内容有所不同。
+
+因此，我们将会用到eex引擎的标签——<%= %>，用来执行Elixir代码。注意开始标签有一个`=`就像`<%=`。那意味着标签里面的任何Elixir代码都会被执行，并且执行结果会替换掉标签。如果开始标签没有`=`，代码依旧会被执行，但是结果不会显示在页面上。
+
+这个模板的代码应该跟下面一样。
+```
+<div class="jumbotron">
+  <h2>Hello World, from <%= @messenger %>!</h2>
+</div>
+```
+我们的messenger就是`@messenger`的值。在这种情况下，它不是模块属性。它只是用元编程实现的一个语法，它意味着`Dict.get(assigns, :messenger)`。它看起来更美观也更好用。
+
+搞定啦。如果你在浏览器中打开[http://localhost:4000/hello/Frank](http://localhost:4000/hello/Frank)。你应该能看到下面的页面。
+
+![new page](https://www.filepicker.io/api/file/jTxIw39Sma27wHr6z14g)
+
+可以多试几次。你放在`/hello/will`后面的东西都会作为`messenger`显示在页面上。
