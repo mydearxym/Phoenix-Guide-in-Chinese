@@ -105,3 +105,16 @@ end
 ```
 现在我们讲不讨论管道（pipeline）和`scope`的用法，而是专注于路由。（如果你很好奇，可以查阅[路由部分的指南](http://www.phoenixframework.org/docs/routing)）
 
+让我们添加一个路由来匹配`/hello`的`GET`请求，并把它交给`HelloPhoenix.HelloController`的动作函数`index`处理。
+```
+get "/hello", HelloController, :index
+```
+`router.ex`文件里面的`scope "/"`现在看起来应该跟下面一样：
+```
+scope "/", HelloPhoenix do
+  pipe_through :browser # Use the default browser stack
+
+  get "/", PageController, :index
+  get "/hello", HelloController, :index
+end
+```
